@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "ru">
+<title>Авторизация</title>
+<head>
+<style>
+.form-center {
+  display:flex;
+  justify-content: center;
+  padding-top: 16rem;
+}
+.input {
+font-size: 1.2rem;
+border-radius: 0.3rem;
+}
+.form-actions {
+text-align: center;
+margin-top: 1.2rem;
+}
+.submit {
+font-size: 1.2rem;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div class="form-center">
+<form id = "dataform" method ="post" action="/auth">
+  <input class = "input" type="text" id="fname" name="username" required placeholder = "Имя пользователя"><br>
+  <input class = "input" type="password" id="passw" name="password" required placeholder ="Пароль"><br>
+  <div class="form-actions"><input class = "submit" type = "submit" value = "Подтвердить"></div>
+</form>
+</div>
+</body>
+<!--
+<script>
+document.getElementById('dataform').addEventListener('submit',async function(e) {
+e.preventDefault();
+const username = document.getElementById('fname').value;
+const password = document.getElementById('passw').value;
+const data = {
+username: username, password: password,
+//timestamp: new Date().toISOString()
+};
+try {
+const response = await fetch('http://morlov.ku:3000/auth', {
+method: 'POST',
+headers: {
+'Content-Type':'application/json',
+},
+body: JSON.stringify(data)
+});
+const answer = await response;
+console.log(answer);
+} catch (error) {
+console.error('Ошибка', error);
+alert('Произошла ошибка при отправке данных');
+}
+});
+
+</script>
+-->
+</html>

@@ -1,0 +1,27 @@
+mstsc /v:95.52.95.151:3389
+https://customs.gov.ru/
+
+margin: 0;
+letter-spacing: .00813rem;
+color: #e8ebe6;
+font-family: "PT Serif", sans-serif;
+font-size: 2.375rem;
+font-weight: 700;
+line-height: 3rem;
+
+#0F7A65
+
+<rewrite>
+		<rules>
+		<rule name = "NodeJS Proxy" stopProcessing="true">
+		<match url="^api/(.*)" />
+		<action type="Rewrite" url="http://localhost:3000/{R:1}" />
+		</rule>
+	
+		<rule name = "API Proxy" stopProcessing="true">
+		<match url="^api/(.*)" />
+		<action type="Rewrite" url="http://localhost:3000/{R:0}" />
+		</rule>
+		</rules>
+	</rewrite>
+	<proxy enabled="true" preserveHostHeader="false" reverseRewriteHost="false" />

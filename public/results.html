@@ -1,0 +1,33 @@
+<html lang = "ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div style = "position: fixed; left: 3rem; top: 3rem;">
+        <h2>Ваши результаты:</h2>
+        <div id = "results_container"></div>
+        <div style = "position: fixed; bottom: 2rem; right: 2rem;">
+            <button class = "question_navi_btn" id = "back_to_menu">Вернуться на главную страницу</button>
+        </div>
+    </div>
+</body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const correct = urlParams.get('correct');
+    const from = urlParams.get('from');
+    const timestamp = urlParams.get('timestamp');
+    const timer = urlParams.get('timer');
+    const username = urlParams.get('username');
+    console.log(correct, from, timestamp, timer);
+    const results_container = document.createElement('div');
+    results_container.innerHTML = `<br><h3>Вы дали ${correct} правильных ответов из ${from}</h3>
+    <br><span class = "additional">Время прохождения: ${timer}</span><br><span class = "additional">Дата завершения: ${timestamp}</span>`;
+    document.getElementById('results_container').appendChild(results_container);
+    document.getElementById('back_to_menu').addEventListener('click', function() {
+        window.location.replace(`/user_main?username=${username}`);
+    });
+</script>
+</html>
